@@ -57,7 +57,7 @@ const Navbar = () => {
           {/*Nav Links- Desktop*/}
           <div className="hidden md:flex items-center gap-6 text-sm text-sinc-600">
             <Link to="/">Home</Link>
-            <Link to="/produts">Products</Link>
+            <Link to="/products">Products</Link>
             <Link to="/deals" className="text-app-orange">
               Deals
             </Link>
