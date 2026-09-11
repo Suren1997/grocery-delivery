@@ -17,12 +17,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "./context/CardContext";
 
 const Navbar = () => {
-  // const user: any = {
-  //   name: "John Doe",
-  //   email: "john@example.com",
-  //   isAdmin: true,
-  // };
-  const user: any = null;
+  const user: any = {
+    name: "John Doe",
+    email: "john@example.com",
+    isAdmin: true,
+  };
+  // const user: any = null;
   const { cartCount, setIsCartOpen } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [userMenuOpen, setUserMenuOpen] = useState(false);
