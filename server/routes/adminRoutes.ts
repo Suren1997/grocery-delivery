@@ -1,0 +1,20 @@
+import express from "express";
+import auth from "../middleware/auth.js";
+import {
+  getAdminStats,
+  getDeliveryPartners,
+  createDeliveryPartner,
+  updateDeliveryPartner,
+  assignDeliveryPartner,
+} from "../controllers/adminController.js";
+import admin from "../middleware/admin.js";
+
+const adminRouter = express.Router();
+
+adminRouter.get("/stats", auth, admin, getAdminStats);
+adminRouter.get("/delivery-partners", auth, admin, getDeliveryPartners);
+adminRouter.post("/delivery-partners", auth, admin, createDeliveryPartner);
+adminRouter.put("/delivery-partners/:id", auth, admin, updateDeliveryPartner);
+adminRouter.post("/orders/:id/assign", auth, admin, assignDeliveryPartner);
+
+export default adminRouter;
