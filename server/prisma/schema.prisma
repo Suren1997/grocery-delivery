@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -14,16 +14,15 @@ model User {
   password  String
   phone     String?   @default("")
   avatar    String?   @default("")
-  addresses Address[]
-  orders    Order[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  addresses Address[]
+  orders    Order[]
 }
 
 model Address {
   id        String   @id @default(uuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   label     String
   address   String
   city      String
@@ -34,6 +33,7 @@ model Address {
   lng       Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Product {
@@ -54,27 +54,25 @@ model Product {
 }
 
 model Order {
-  id              String @id @default(uuid())
-  userId          String
-  user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  items           Json
-  shippingAddress Json
-  paymentMethod   String @default("card")
-  subtotal        Float
-  deliveryFee     Float? @default(0)
-  tax             Float? @default(0)
-  total           Float
-  status          String @default("Placed")
-  statusHistory   Json
-
+  id                String           @id @default(uuid())
+  userId            String
+  items             Json
+  shippingAddress   Json
+  paymentMethod     String           @default("card")
+  subtotal          Float
+  deliveryFee       Float?           @default(0)
+  tax               Float?           @default(0)
+  total             Float
+  status            String           @default("Placed")
+  statusHistory     Json
   deliveryPartnerId String?
-  deliveryPartner   DeliveryPartner? @relation(fields: [deliveryPartnerId], references: [id], onDelete: SetNull)
   deliveryOtp       String?          @default("")
   liveLocation      Json?
   isPaid            Boolean?         @default(false)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  deliveryPartner   DeliveryPartner? @relation(fields: [deliveryPartnerId], references: [id])
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model DeliveryPartner {
@@ -86,7 +84,7 @@ model DeliveryPartner {
   avatar      String?  @default("")
   vehicleType String?  @default("bike")
   isActive    Boolean? @default(true)
-  orders      Order[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  orders      Order[]
 }
