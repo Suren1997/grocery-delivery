@@ -16,7 +16,7 @@ const AddressCard = ({
   const handleDelete = async (id: string) => {};
   return (
     <div
-      key={addr._id}
+      key={addr.id}
       className="max-w-3xl bg-white rounded-2xl p-6 flex items-start justify-between"
     >
       {/**Left */}
@@ -50,7 +50,7 @@ const AddressCard = ({
         </button>
 
         <button
-          onClick={() => handleDelete(addr._id)}
+          onClick={() => handleDelete(addr.id)}
           className="p-2 text-app-text-light hover:text-app-error hover:bg-red-50 rounded-lg transition-colors"
         >
           <Trash2Icon className="size-4" />
