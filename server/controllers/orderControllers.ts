@@ -118,8 +118,8 @@ export const getUsersOrders = async (req: Request, res: Response) => {
     where,
     include: {
       deliveryPartner: { select: { name: true, phone: true } },
-      orderBy: { createdAt: "desc" },
     },
+    orderBy: { createdAt: "desc" },
   });
 
   res.json({ orders });
@@ -138,7 +138,7 @@ export const getOrder = async (req: Request, res: Response) => {
     },
   });
 
-  if (order) {
+  if (!order) {
     return res.status(404).json({
       message: "Order not found",
     });
@@ -186,8 +186,8 @@ export const getAllOrders = async (req: Request, res: Response) => {
     include: {
       user: { select: { name: true, email: true } },
       deliveryPartner: { select: { name: true, phone: true, email: true } },
-      orderBy: { createdAt: "desc" },
     },
+    orderBy: { createdAt: "desc" },
   });
 
   res.json({ orders });

@@ -2,7 +2,6 @@ import { ChevronRightIcon, MapPinIcon, PlusIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CheckoutAddress = ({ user, address, setAddress, setStep }: any) => {
-  console.log("addresss", address);
   return (
     <div className="bg-white rounded-2xl p-6 animate-fade-in">
       <h2 className="text-lg font-semibold text-app-green mb-5 flex items-center gap-2">
