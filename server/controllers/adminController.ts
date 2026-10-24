@@ -81,7 +81,6 @@ export const createDeliveryPartner = async (req: Request, res: Response) => {
 };
 
 //update delivery partner profile
-
 export const updateDeliveryPartner = async (req: Request, res: Response) => {
   const { name, phone, vehicleType, isActive } = req.body;
   const data: any = {};
@@ -111,7 +110,7 @@ export const assignDeliveryPartner = async (req: Request, res: Response) => {
   });
 
   const partner = await prisma.deliveryPartner.findUnique({
-    where: { id: patnerId },
+    where: { id: partnerId },
   });
 
   const otp = String(Math.floor(100000 + Math.random() * 900000));
@@ -134,7 +133,7 @@ export const assignDeliveryPartner = async (req: Request, res: Response) => {
   await prisma.order.update({
     where: { id: order!.id },
     data: {
-      deliveryPartnerId: patnerId!.id,
+      deliveryPartnerId: partnerId!.id,
       status,
       statusHistory: history,
       deliveryOtp: otp,

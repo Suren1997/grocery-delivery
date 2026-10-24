@@ -12,7 +12,7 @@ export const getAddresses = async (
     orderBy: { createdAt: "desc" },
   });
 
-  res.json({ addresses });
+  res.status(201).json({ addresses });
 };
 
 // Add address
