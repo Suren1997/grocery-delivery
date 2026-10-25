@@ -20,18 +20,17 @@ const MyOrders = () => {
   const { clearCart } = useCart();
 
   const fetchOrders = async () => {
-     setLoading(true);
-     try{
-      console.log(activeTab)
+    setLoading(true);
+    try {
+      console.log(activeTab);
       const params = activeTab !== "all" ? `?status=${activeTab}` : " ";
-      console.log('paramssss',params)
-      const { data }=await api.get(`/orders${params}`)
-      setOrders(data.orders)
-     }catch(error:any){
-      toast.error(error.response?.data?.message || error?.message)
-     } finally{
-      setLoading(false)
-     }
+      const { data } = await api.get(`/orders${params}`);
+      setOrders(data.orders);
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || error?.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
