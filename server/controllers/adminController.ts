@@ -103,7 +103,7 @@ export const updateDeliveryPartner = async (req: Request, res: Response) => {
 
 //assign delivery partner to order
 export const assignDeliveryPartner = async (req: Request, res: Response) => {
-  const { patnerId } = req.body;
+  const { partnerId } = req.body;
 
   const order = await prisma.order.findUnique({
     where: { id: req.params.id as string },
