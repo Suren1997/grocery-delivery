@@ -1,12 +1,17 @@
+type categoryProps = {
+  slug: string;
+  name: string;
+  image: String;
+};
 interface FilterType {
-  categories: [];
+  categories: categoryProps[];
   category: string;
   organic: string;
-  minPrice: number;
-  maxPrice: number;
+  minPrice: string;
+  maxPrice: string;
   updateFilter: (key: string, value: string) => void;
   clearFilters: () => void;
-  hasFilters: boolean;
+  hasFilters: string;
 }
 
 const FilterPanel = ({
