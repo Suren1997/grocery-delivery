@@ -6,7 +6,6 @@ type categoryProps = {
 interface FilterType {
   categories: categoryProps[];
   category: string;
-  organic: string;
   minPrice: string;
   maxPrice: string;
   updateFilter: (key: string, value: string) => void;
@@ -17,7 +16,6 @@ interface FilterType {
 const FilterPanel = ({
   categories,
   category,
-  organic,
   minPrice,
   maxPrice,
   updateFilter,

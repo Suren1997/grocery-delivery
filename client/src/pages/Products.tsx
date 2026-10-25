@@ -17,7 +17,6 @@ const Products = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const category = searchParams.get("category") || "";
-  const organic = searchParams.get("organic") || "";
   const sort = searchParams.get("sort") || "";
   const page = Number(searchParams.get("page")) || 1;
   const minPrice = searchParams.get("minPrice") || "";
@@ -28,7 +27,6 @@ const Products = () => {
     try {
       const params = new URLSearchParams();
       if (category) params.set("category", category);
-      if (organic) params.set("organic", organic);
       if (sort) params.set("sort", sort);
       if (minPrice) params.set("minPrice", minPrice);
       if (maxPrice) params.set("maxPrice", maxPrice);
@@ -63,11 +61,11 @@ const Products = () => {
 
   const activeCategory = categoriesData.find((c) => c.slug === category);
 
-  const hasFilters = category || organic || minPrice || maxPrice;
+  const hasFilters = category || minPrice || maxPrice;
 
   useEffect(() => {
     fetchProducts();
-  }, [category, organic, sort, page, minPrice, maxPrice]);
+  }, [category, sort, page, minPrice, maxPrice]);
 
   return (
     <div className="min-h-screen bg-app-cream">
@@ -90,7 +88,6 @@ const Products = () => {
               <FilterPanel
                 categories={categoriesData}
                 category={category}
-                organic={organic}
                 minPrice={minPrice}
                 maxPrice={maxPrice}
                 updateFilter={updateFilter}
@@ -209,7 +206,6 @@ const Products = () => {
               <FilterPanel
                 categories={categoriesData}
                 category={category}
-                organic={organic}
                 minPrice={minPrice}
                 maxPrice={maxPrice}
                 updateFilter={updateFilter}
