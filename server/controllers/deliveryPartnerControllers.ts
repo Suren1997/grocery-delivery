@@ -188,6 +188,7 @@ export const updateDeliveryStatus = async (req: Request, res: Response) => {
 //put/api/delivery/my-deliveries/:id/location
 export const updateLocation = async (req: Request, res: Response) => {
   const { lat, lng } = req.body;
+  console.log("reqqqq", req.partner);
 
   const order = await prisma.order.findFirst({
     where: {

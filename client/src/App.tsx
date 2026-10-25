@@ -67,9 +67,14 @@ const App = () => {
         </Route>
 
         {/**Delivery Partner Pages */}
+        {/* <Route path="/delivery/login" element={<DeliveryLogin />}>
+          <Route index element={<DeliveryDashboard />} />
+          <Route path="/delivery/info" element={<DeliveryLayout />} />
+        </Route> */}
+
+        <Route path="/delivery/login" element={<DeliveryLogin />} />
         <Route path="/delivery" element={<DeliveryLayout />}>
           <Route index element={<DeliveryDashboard />} />
-          <Route path="/delivery/login" element={<DeliveryLogin />} />
         </Route>
       </Routes>
     </>

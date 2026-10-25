@@ -179,7 +179,6 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
 
 //Get allorders(admin)
 //GET/api/orders/all
-
 export const getAllOrders = async (req: Request, res: Response) => {
   const orders = await prisma.order.findMany({
     where: { NOT: [{ paymentMethod: "card", isPaid: false }] },
@@ -195,7 +194,6 @@ export const getAllOrders = async (req: Request, res: Response) => {
 
 //GET order location
 //GET/api/orders:/:id/location
-
 export const getOrderLocation = async (req: Request, res: Response) => {
   const order = await prisma.order.findFirst({
     where: { id: req.params.id as string, userId: req.user!.id },

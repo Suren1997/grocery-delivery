@@ -6,6 +6,7 @@ import type { DeliveryPartner } from "../../types";
 export default function DeliveryLayout() {
   const navigate = useNavigate();
   const [partner, setPartner] = useState<DeliveryPartner | null>(null);
+
   useEffect(() => {
     const saved = localStorage.getItem("delivery_partner");
     const token = localStorage.getItem("delivery_token");
