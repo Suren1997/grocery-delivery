@@ -1,4 +1,3 @@
-import React from "react";
 import { heroSectionData } from "../../assets/assets";
 
 const Features = () => {
