@@ -1,3 +1,14 @@
+interface FilterType {
+  categories: [];
+  category: string;
+  organic: string;
+  minPrice: number;
+  maxPrice: number;
+  updateFilter: (key: string, value: string) => void;
+  clearFilters: () => void;
+  hasFilters: boolean;
+}
+
 const FilterPanel = ({
   categories,
   category,
@@ -7,7 +18,7 @@ const FilterPanel = ({
   updateFilter,
   clearFilters,
   hasFilters,
-}) => {
+}: FilterType) => {
   const categorieswithAll = [
     {
       slug: "",
